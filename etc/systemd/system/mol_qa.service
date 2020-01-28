@@ -1,0 +1,17 @@
+
+[Unit]
+Description=Dell Boomi MOL_QA
+After=network.target
+RequiresMountsFor=/mnt/data/molecule/Molecule_MOL_Qa/
+
+[Service]
+EnvironmentFile=/etc/boomi_environment_file.conf
+Restart=always
+Type=forking
+User=boomi
+ExecStart=/usr/local/boomi/molecule/Molecule_MOL_Qa/bin/atom start
+ExecStop=/usr/local/boomi/molecule/Molecule_MOL_Qa/bin/atom stop
+ExecReload=/usr/local/boomi/molecule/Molecule_MOL_Qa/bin/atom restart
+
+[Install]
+WantedBy=multi-user.target
